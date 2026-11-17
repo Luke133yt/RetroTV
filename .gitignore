@@ -1,0 +1,22 @@
+# Runtime data: channels, settings, cached metadata, uploaded logos.
+# This folder may contain debrid keys and personal library paths.
+data/
+
+# Temporary files and logs
+*.log
+*.tmp
+*.bak
+
+# Dependencies (RetroTV has none, but keep this in case they are added)
+node_modules/
+
+# Environment overrides
+.env
+.env.*
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/

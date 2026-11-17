@@ -1,0 +1,33 @@
+{
+  "name": "retrotv",
+  "version": "2.1.0",
+  "description": "A vintage TV for the media you already watch in Stremio and Nuvio: channels, schedules, YouTube commercials, TV guide, watermarks, offline library and a Stremio/Nuvio addon.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/run.js"
+  },
+  "keywords": [
+    "stremio",
+    "nuvio",
+    "addon",
+    "tv",
+    "retro",
+    "iptv",
+    "scheduler"
+  ],
+  "author": "Luke133yt",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luke133yt/RetroTV.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Luke133yt/RetroTV/issues"
+  },
+  "homepage": "https://github.com/Luke133yt/RetroTV#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "private": false
+}

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RetroTV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="room">
+  <div id="tv">
+    <div id="antenna"><i></i><i></i></div>
+    <div id="cabinet">
+      <div id="bezel">
+        <div id="screen">
+          <video id="vid" playsinline></video>
+          <div id="ytbox"><div id="yt"></div></div>
+          <canvas id="noise" width="192" height="108"></canvas>
+          <div id="tune"></div>
+          <div id="testcard">
+            <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="tc-box"><b id="tcTitle">NO SIGNAL</b><span id="tcSub"></span><em id="tcClock"></em></div>
+          </div>
+          <div id="watermark"><img id="wmImg" alt=""></div>
+          <div id="osdNum"></div>
+          <div id="osdInfo"><b id="oiTitle"></b><span id="oiSub"></span><small id="oiTime"></small></div>
+          <div id="vol"><span>VOL</span><div id="volBar"></div></div>
+          <div id="toast"></div>
+          <div id="crt"></div>
+          <div id="off"><button id="powerBig" data-i18n-title="power.title" title="Turn on">⏻<span data-i18n="power.on">PRESS TO TURN ON</span></button></div>
+
+          <div id="guide" class="overlay" hidden>
+            <header>
+              <b data-i18n="guide.title">TV GUIDE</b>
+              <span id="gDate"></span>
+              <nav>
+                <button id="gPrev" title="Previous day">◀</button><button id="gToday" data-i18n="guide.today">TODAY</button><button id="gNext" title="Next day">▶</button>
+                <button id="gClose" title="Close">✕</button>
+              </nav>
+            </header>
+            <div id="gBody"><div id="gChans"></div><div id="gScroll"><div id="gGrid"></div></div></div>
+            <footer id="gInfo" data-i18n="guide.footer">Click a programme for details · Click the one on air to tune in</footer>
+          </div>
+        </div>
+      </div>
+      <aside id="panel">
+        <div class="grille"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="led" id="led"></div>
+        <div class="knobs">
+          <button class="knob" id="knobCh" data-i18n-title="panel.knob" title="Change channel"><span id="knobNum">--</span></button>
+          <label data-i18n="panel.channel">CHANNEL</label>
+        </div>
+        <div class="btns">
+          <button id="chUp" data-i18n-title="panel.chUp" title="Next channel (↑)">▲ CH</button>
+          <button id="chDown" data-i18n-title="panel.chDown" title="Previous channel (↓)">▼ CH</button>
+          <button id="btnGuide" data-i18n-title="panel.guide" title="TV guide (G)">GUIDE</button>
+          <button id="btnMenu" data-i18n-title="panel.menu" title="Settings (M)">MENU</button>
+          <button id="btnMute" data-i18n-title="panel.mute" title="Mute">🔊</button>
+          <button id="btnFull" data-i18n-title="panel.full" title="Fullscreen (F)">⛶</button>
+          <button id="btnPower" data-i18n-title="panel.power" title="On/Off">⏻</button>
+        </div>
+      </aside>
+    </div>
+    <div id="feet"><i></i><i></i></div>
+  </div>
+  <p id="hint" data-i18n="hint">↑ ↓ change channel · 0-9 channel number · G guide · M menu · C CRT · F fullscreen</p>
+  <div id="updateBar" hidden>
+    <div class="ub-body">
+      <b id="ubTitle" data-i18n="update.available">UPDATE AVAILABLE</b>
+      <span id="ubSub"></span>
+    </div>
+    <button id="ubNow" class="primary" data-i18n="update.now">UPDATE NOW</button>
+    <button id="ubLater" data-i18n="update.later">LATER</button>
+  </div>
+</div>
+
+<div id="menu" class="overlay" hidden>
+  <div class="mwin">
+    <header>
+      <b data-i18n="menu.title">■ RETROTV MENU</b>
+      <nav id="mTabs">
+        <button data-tab="channels" class="on" data-i18n="tab.channels">CHANNELS</button>
+        <button data-tab="sources" data-i18n="tab.sources">SOURCES</button>
+        <button data-tab="library" data-i18n="tab.library">LIBRARY</button>
+        <button data-tab="addon" data-i18n="tab.addon">ADDON</button>
+        <button data-tab="options" data-i18n="tab.options">OPTIONS</button>
+        <button data-tab="backup" data-i18n="tab.backup">BACKUP</button>
+      </nav>
+      <button id="mClose" data-i18n-title="menu.close" title="Close (Esc)">✕</button>
+    </header>
+    <section id="tab-channels" class="tab on"></section>
+    <section id="tab-sources" class="tab"></section>
+    <section id="tab-library" class="tab"></section>
+    <section id="tab-addon" class="tab"></section>
+    <section id="tab-options" class="tab"></section>
+    <section id="tab-backup" class="tab"></section>
+    <footer><span id="mStatus"></span><button id="mSave" class="primary" data-i18n="menu.save">SAVE ALL</button></footer>
+  </div>
+</div>
+
+<script src="i18n.js"></script>
+<script src="vendor/hls.min.js"></script>
+<script src="tv.js"></script>
+<script src="menu.js"></script>
+</body>
+</html>

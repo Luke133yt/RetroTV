@@ -1,0 +1,48 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Verify tag matches package.json
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          if [ "v$VERSION" != "${GITHUB_REF_NAME}" ]; then
+            echo "Tag ${GITHUB_REF_NAME} does not match package.json version $VERSION"
+            exit 1
+          fi
+          echo "Releasing v$VERSION"
+
+      - name: Run tests
+        run: node test/run.js
+
+      - name: Build source archives
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+          mkdir -p dist
+          git archive --format=tar.gz --prefix="RetroTV-$VERSION/" -o "dist/retrotv-$VERSION.tar.gz" HEAD
+          git archive --format=zip --prefix="RetroTV-$VERSION/" -o "dist/retrotv-$VERSION.zip" HEAD
+          cd dist
+          sha256sum retrotv-* > SHA256SUMS.txt
+          ls -lh
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: RetroTV ${{ github.ref_name }}
+          generate_release_notes: true
+          files: dist/*
